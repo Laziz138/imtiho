@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Online Parkovka</title>
+  </head>
+  <body>
+    <%for(let i=0;i<2;i++){%>
+    <h1><%=data[i].model%></h1>
+
+    <ul id="cars-list">
+      <%=data[i].id%>
+    </ul>
+    <%}%>
+  </body>
+</html>
