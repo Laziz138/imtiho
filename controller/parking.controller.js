@@ -13,14 +13,14 @@ let addMoshin = (req, res, next) => {
 let updateMoshin = (req, res, next) => {
   let moshin = parkingService.parking();
 
-  let Park = moshin.find((u) => u.id === +req.params.id);
-  if (Park) {
-    Object.assign(Park, req.body);
-    res.json(Park);
-  } else {
-    res.status(404).send("Foydalanuvchi topilmadi");
-  }
-  //   fs.writeFileSync("./config/parking.json", JSON.stringify(Park), "utf8");
+  moshin = moshin.map((item) => {
+    if (item.id == +req.params.id) {
+      Object.assign(item, req.body);
+    }
+    return item;
+  });
+  res.json(moshin);
+  fs.writeFileSync("./config/parking.json", JSON.stringify(moshin), "utf-8");
 };
 let deleteMoshin = (req, res, next) => {
   let park = parkingService.parking();
