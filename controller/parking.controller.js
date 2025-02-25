@@ -25,7 +25,7 @@ let updateMoshin = (req, res, next) => {
 let deleteMoshin = (req, res, next) => {
   let park = parkingService.parking();
   const royxat = park.filter((u) => u.id !== +req.params.id);
-
+  res.send(`${+req.params.id}-ididagi moshin o'chrildi`);
   fs.writeFileSync("./config/parking.json", JSON.stringify(royxat), "utf8");
 };
 module.exports = { royxatlar, addMoshin, updateMoshin, deleteMoshin };
